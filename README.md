@@ -8,3 +8,20 @@ The first job waits for the second job to complete and then prints the value of 
 
 Together, these two pipelines demonstrate how to trigger downstream jobs, pass parameters, and retrieve the result from the downstream job in the upstream job.
 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+The commented out "triggers" section in the second pipeline script is an alternate way of triggering the downstream job "pipeline-triggers-upstream-job" when the upstream job "downstream-job" succeeds. This approach is known as defining upstream and downstream projects, and it allows Jenkins to automatically start the downstream job when the upstream job completes successfully.
+
+![image](https://user-images.githubusercontent.com/123317116/218682628-ea0230fe-fb06-4435-9da4-2a8bf45c9c0a.png)
+
+In this example, the 'threshold' parameter is set to "SUCCESS" to indicate that the downstream job should only be triggered when the upstream job completes successfully. This approach provides a more streamlined and automated solution for triggering downstream jobs and is useful in larger, more complex pipelines.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+To configure upstream and downstream jobs using the Jenkins GUI, you would need to navigate to the "Configure" page of the downstream job and add under Build Triggers" > "build after other projects are build" > "projects to watch > and add the upstream job. 
+Once configured, the downstream job will be automatically triggered when the upstream job completes successfully.
+
+![image](https://user-images.githubusercontent.com/123317116/218684415-cab6d13b-b89b-45f2-8f91-f2a1bee49b4f.png)
