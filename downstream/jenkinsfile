@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    // triggers {
+    //     upstream(upstreamProjects: 'pipeline-triggers-upstream-job', 
+    //     threshold: hudson.model.Result.SUCCESS)
+    // }
+    environment {
+        RETURNED_VALUE = ""
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'pipeline-triggers-upstream executed'
+                script {
+                    env.RETURNED_VALUE = "this text is from downstream-job"
+                }
+            }
+        }
+        stage('getting and Printing Aritifacts') {
+            steps {
+                script {
+                    echo "VAR_1: ${params.VAR_1}"
+                    echo "VAR_2: ${params.VAR_2}"
+                    echo "VAR_3: ${params.VAR_3}"
+                }
+            }
+        }
+    }
+}

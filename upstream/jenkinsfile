@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                script{
+                    echo 'pipeline-triggers-upstream-job executed'
+                    def ret = build job: 'downstream-job',
+                    parameters: [
+                        string(name: 'VAR_1', value: "First Value from upstream-job"),
+                        string(name: 'VAR_2', value: "Second Value from upstream-job"),
+                        string(name: 'VAR_3', value: "third Value from upstream-job")
+                    ]
+                    echo "The returned value from the triggered job was:  ${ret.buildVariables.RETURNED_VALUE}"
+                }
+            }
+        }
+    }
+}
