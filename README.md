@@ -20,10 +20,7 @@ The commented out "triggers" section in the second pipeline script is an alterna
 
 In this example, the 'threshold' parameter is set to "SUCCESS" to indicate that the downstream job should only be triggered when the upstream job completes successfully. This approach provides a more streamlined and automated solution for triggering downstream jobs and is useful in larger, more complex pipelines.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
-To configure upstream and downstream jobs using the Jenkins GUI, you would need to navigate to the "Configure" page of the downstream job and add under Build Triggers" > "build after other projects are build" > "projects to watch > and add the upstream job. 
+Using this method, you will also need to configure upstream and downstream jobs using the Jenkins GUI, you would need to navigate to the "Configure" page of the downstream job and add under Build Triggers" > "build after other projects are build" > "projects to watch > and add the upstream job. 
 Once configured, the downstream job will be automatically triggered when the upstream job completes successfully.
 
 ![image](https://user-images.githubusercontent.com/123317116/218684415-cab6d13b-b89b-45f2-8f91-f2a1bee49b4f.png)
